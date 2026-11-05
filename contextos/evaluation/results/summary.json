@@ -1,0 +1,686 @@
+{
+  "generatedAt": "2026-11-05T21:14:39.151Z",
+  "odysseusUrl": "http://127.0.0.1:7011",
+  "testCases": [
+    {
+      "id": "current_db",
+      "category": "Current-state retrieval",
+      "question": "What database does the StudyMate project currently use, and why was it chosen?",
+      "truth": "PostgreSQL, verified in production on 20 May 2026; chosen in March for relational data requirements (replacing MongoDB).",
+      "must": [
+        "names PostgreSQL",
+        "gives the relational-data reason"
+      ],
+      "mustNot": [
+        "claims MongoDB is current"
+      ]
+    },
+    {
+      "id": "original_db",
+      "category": "Historical retrieval",
+      "question": "What was StudyMate's original database plan at the start of the project?",
+      "truth": "MongoDB (planned in January because it integrates easily with Node.js).",
+      "must": [
+        "names MongoDB"
+      ],
+      "mustNot": [
+        "says PostgreSQL was the original plan"
+      ]
+    },
+    {
+      "id": "db_evolution",
+      "category": "Temporal correctness",
+      "question": "How did StudyMate's database decision evolve between January and May 2026?",
+      "truth": "Jan MongoDB planned → Feb PostgreSQL considered → Mar decided to migrate → Apr migration claimed implemented → May verified in production.",
+      "must": [
+        "mentions MongoDB",
+        "mentions PostgreSQL",
+        "distinguishes proposal/consideration",
+        "mentions the decision",
+        "mentions verification/confirmation"
+      ],
+      "mustNot": []
+    },
+    {
+      "id": "unverified_claims",
+      "category": "Implementation vs verification",
+      "question": "Which StudyMate implementation claims have not been verified yet?",
+      "truth": "Stripe payment integration (claimed implemented 14 Apr 2026, never verified).",
+      "must": [
+        "names Stripe"
+      ],
+      "mustNot": [
+        "says PostgreSQL is unverified"
+      ]
+    },
+    {
+      "id": "not_implemented",
+      "category": "Decision vs implementation",
+      "question": "Which StudyMate decisions have been made but not implemented yet?",
+      "truth": "Moving hosting from Heroku to Render (decided 18 Mar 2026, no implementation claim).",
+      "must": [
+        "names Render"
+      ],
+      "mustNot": [
+        "says Render is already deployed"
+      ]
+    },
+    {
+      "id": "rejected",
+      "category": "Rejected decisions",
+      "question": "Which technology options did the StudyMate team reject, and why?",
+      "truth": "Redis (caching) — rejected because traffic is low and it adds operational overhead.",
+      "must": [
+        "names Redis",
+        "gives the reason"
+      ],
+      "mustNot": []
+    },
+    {
+      "id": "open_commitments",
+      "category": "Commitments",
+      "question": "Which StudyMate commitments are still open or overdue?",
+      "truth": "Add payment failure alerts (Ravi, due 15 Jun 2026, overdue). Runbook is done; doc portal was cancelled.",
+      "must": [
+        "names payment failure alerts"
+      ],
+      "mustNot": [
+        "lists the finished runbook as open",
+        "lists the cancelled doc portal as open"
+      ]
+    },
+    {
+      "id": "contradiction_trap",
+      "category": "Conflict detection",
+      "question": "Does StudyMate still use MongoDB?",
+      "truth": "No: PostgreSQL is verified. A June statement claims MongoDB is still used; it contradicts the verified state and is flagged for review.",
+      "must": [
+        "points to PostgreSQL"
+      ],
+      "mustNot": [
+        "answers yes"
+      ]
+    },
+    {
+      "id": "hosting_now",
+      "category": "Supersession",
+      "question": "Where is the StudyMate backend hosted, according to the latest decision?",
+      "truth": "Render was decided (18 Mar 2026) replacing Heroku; the move has not been confirmed as implemented.",
+      "must": [
+        "names Render"
+      ],
+      "mustNot": [
+        "says Heroku is the current host"
+      ]
+    },
+    {
+      "id": "evidence",
+      "category": "Evidence attribution",
+      "question": "What evidence shows that StudyMate's PostgreSQL migration actually works?",
+      "truth": "20 May 2026 production readiness review: 'We tested the application and confirmed that PostgreSQL is running successfully in production.'",
+      "must": [
+        "cites the production test/confirmation",
+        "dates it (May 2026)"
+      ],
+      "mustNot": []
+    }
+  ],
+  "summaries": [
+    {
+      "phase": "A",
+      "label": "Odysseus alone (native memory, chat mode)",
+      "model": "openai/gpt-oss-120b",
+      "questions": 10,
+      "passed": 6,
+      "accuracy": 0.6,
+      "factRecall": 0.68,
+      "wrongClaims": 1,
+      "questionsWithWrongClaims": 1,
+      "errors": 0,
+      "totalInputTokens": 6263,
+      "totalOutputTokens": 3830,
+      "avgTokensPerQuestion": 1009,
+      "tokensPerCorrectAnswer": 1682,
+      "avgLatencyMs": 3196,
+      "avgToolCalls": 0,
+      "contextosToolUseRate": 0
+    },
+    {
+      "phase": "C",
+      "label": "ContextOS direct (deterministic, no LLM for state)",
+      "model": "none (deterministic)",
+      "questions": 10,
+      "passed": 10,
+      "accuracy": 1,
+      "factRecall": 1,
+      "wrongClaims": 0,
+      "questionsWithWrongClaims": 0,
+      "errors": 0,
+      "totalInputTokens": 0,
+      "totalOutputTokens": 0,
+      "avgTokensPerQuestion": 0,
+      "tokensPerCorrectAnswer": 0,
+      "avgLatencyMs": 1690,
+      "avgToolCalls": 0,
+      "contextosToolUseRate": 0
+    }
+  ],
+  "phases": [
+    {
+      "phase": "A",
+      "label": "Odysseus alone (native memory, chat mode)",
+      "model": "openai/gpt-oss-120b",
+      "startedAt": "2026-11-05T20:35:06.884Z",
+      "finishedAt": "2026-11-05T20:35:54.103Z",
+      "notes": [
+        "Loaded 17 StudyMate statements into Odysseus native memory (vector index: true), labelled source=contextos_eval.",
+        "Odysseus native memory injection ON, chat mode (its memory path). ContextOS MCP not registered/disabled."
+      ],
+      "cases": [
+        {
+          "id": "current_db",
+          "category": "Current-state retrieval",
+          "question": "What database does the StudyMate project currently use, and why was it chosen?",
+          "answer": "The StudyMate project is still using **MongoDB** for its data storage.  \nIt was originally selected because **MongoDB integrates very easily with a Node.js backend**, making it a straightforward choice when the project was first scoped.",
+          "grade": {
+            "pass": false,
+            "requiredHit": 0,
+            "requiredTotal": 2,
+            "recall": 0,
+            "missing": [
+              "names PostgreSQL",
+              "gives the relational-data reason"
+            ],
+            "violations": [
+              "claims MongoDB is current"
+            ]
+          },
+          "inputTokens": 631,
+          "outputTokens": 305,
+          "sessionInputTokens": 631,
+          "sessionOutputTokens": 305,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2652,
+          "sessionId": "a47b531e-41e0-41c0-9b46-4011547936d5",
+          "error": null
+        },
+        {
+          "id": "original_db",
+          "category": "Historical retrieval",
+          "question": "What was StudyMate's original database plan at the start of the project?",
+          "answer": "StudyMate was originally planned to use MongoDB as its database.",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 618,
+          "outputTokens": 200,
+          "sessionInputTokens": 618,
+          "sessionOutputTokens": 200,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1962,
+          "sessionId": "0338fcb7-6f7e-496c-8e33-eb533980fdf6",
+          "error": null
+        },
+        {
+          "id": "db_evolution",
+          "category": "Temporal correctness",
+          "question": "How did StudyMate's database decision evolve between January and May 2026?",
+          "answer": "Between the start of 2026 and May 2026, StudyMate’s approach to its primary data store shifted from continuing to rely on MongoDB to fully migrating to PostgreSQL.\n\n**Early‑2026 (January‑February)**  \n- StudyMate was still using MongoDB as its production database. No public plans for change had been announced yet, and the system continued to store user data in MongoDB.\n\n**March 2026**  \n- A concrete migration plan was put in place. Priya was tasked with writing a data‑migration runbook, with a deadline of 20 March 2026. This indicates that the decision to move away from MongoDB had already been made and the team was preparing the necessary documentation and procedures.\n\n**April 2026**  \n- By 14 April 2026 the technical work on the migration was completed: the PostgreSQL migration had been implemented. At this point the new database schema and data‑transfer mechanisms were in place, though the switch had not yet been verified in production.\n\n**May 2026**  \n- On 20 May 2026 Priya finished the migration runbook, and the team tested the live application. The tests confirmed that PostgreSQL was running successfully in production, signaling the final step of the migration process.\n\n**Summary of the evolution**  \n1. **January–February:** MongoDB remains the live database.  \n2. **March:** Decision to migrate is formalized; a runbook is drafted.  \n3. **April:** Migration code and infrastructure for PostgreSQL are built and deployed.  \n4. **May:** Runbook completed, production testing performed, and PostgreSQL confirmed as the operational database.\n\nThus, over the first five months of 2026, StudyMate moved from a MongoDB‑centric architecture to a fully operational PostgreSQL setup, completing the transition by late May.",
+          "grade": {
+            "pass": false,
+            "requiredHit": 4,
+            "requiredTotal": 5,
+            "recall": 0.8,
+            "missing": [
+              "distinguishes proposal/consideration"
+            ],
+            "violations": []
+          },
+          "inputTokens": 614,
+          "outputTokens": 670,
+          "sessionInputTokens": 614,
+          "sessionOutputTokens": 670,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 3924,
+          "sessionId": "6e12b0e9-0d64-4481-a948-376b6674311e",
+          "error": null
+        },
+        {
+          "id": "unverified_claims",
+          "category": "Implementation vs verification",
+          "question": "Which StudyMate implementation claims have not been verified yet?",
+          "answer": "Based on the saved memory entries, the following StudyMate implementation claims have **not** been confirmed as verified:\n\n| Claim | Why it’s still unverified |\n|-------|---------------------------|\n| “We cancelled the API documentation portal task because the public beta was postponed.” | No follow‑up verification or confirmation is recorded. |\n| “The Stripe payment integration has been implemented.” | The entry reports the implementation, but there’s no test result or confirmation that it’s working. |\n| “Ravi will add payment failure alerts by June 15.” | This is a future‑dated promise; the deadline hasn’t passed yet, so verification is pending. |\n| “Arjun will build the public API documentation portal by the end of February.” | This is also a future‑dated commitment; no evidence of completion is logged. |\n\nThe only claim that has been explicitly verified is the PostgreSQL production status (“tested… confirmed that PostgreSQL is running successfully in production”). All other listed implementation statements remain unverified.",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 616,
+          "outputTokens": 523,
+          "sessionInputTokens": 616,
+          "sessionOutputTokens": 523,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2967,
+          "sessionId": "052786f2-1760-4b0c-acc8-1cde90137daa",
+          "error": null
+        },
+        {
+          "id": "not_implemented",
+          "category": "Decision vs implementation",
+          "question": "Which StudyMate decisions have been made but not implemented yet?",
+          "answer": "Based on the saved memory you provided, every decision that’s been recorded has already been acted on (or is a final rejection/cancellation):\n\n- **Stripe payment integration** – both the decision to use Stripe for subscriptions (3 Mar 2026) and the actual integration (14 Apr 2026) are complete.  \n- **PostgreSQL migration** – implemented on 14 Apr 2026.  \n- **API documentation portal** – the task was cancelled on 18 Mar 2026, so the decision to cancel has been carried out.  \n- **Redis** – the decision to reject Redis (9 Feb 2026) was a definitive “no‑go,” so no implementation was required.\n\n**Result:** There are no outstanding StudyMate decisions that remain pending implementation.",
+          "grade": {
+            "pass": false,
+            "requiredHit": 0,
+            "requiredTotal": 1,
+            "recall": 0,
+            "missing": [
+              "names Render"
+            ],
+            "violations": []
+          },
+          "inputTokens": 612,
+          "outputTokens": 490,
+          "sessionInputTokens": 612,
+          "sessionOutputTokens": 490,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2672,
+          "sessionId": "b95ea9a2-f5b2-46e7-8b71-ef921be40a87",
+          "error": null
+        },
+        {
+          "id": "rejected",
+          "category": "Rejected decisions",
+          "question": "Which technology options did the StudyMate team reject, and why?",
+          "answer": "The StudyMate team rejected **Redis** as a technology choice. They decided against it because their traffic levels are low, and adding Redis would introduce unnecessary operational overhead.",
+          "grade": {
+            "pass": true,
+            "requiredHit": 2,
+            "requiredTotal": 2,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 616,
+          "outputTokens": 302,
+          "sessionInputTokens": 616,
+          "sessionOutputTokens": 302,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2091,
+          "sessionId": "4f877a7f-f7f3-4656-b85b-69c8e3f0abba",
+          "error": null
+        },
+        {
+          "id": "open_commitments",
+          "category": "Commitments",
+          "question": "Which StudyMate commitments are still open or overdue?",
+          "answer": "Based on the stored notes, the only outstanding / overdue commitment is:\n\n| Commitment | Owner | Due date | Status as of Nov 5 2026 |\n|------------|-------|----------|------------------------|\n| Add payment‑failure alerts | Ravi | **June 15 2026** | **Overdue** – no record of completion after the due date. |\n\nAll other items mentioned in the notes have either been completed (Stripe integration, data‑migration runbook) or were cancelled/decided (API‑doc portal, Stripe‑selection decision). If you’d like to follow up on the overdue alert work—e.g., re‑assign it, set a new deadline, or check on progress—just let me know!",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 608,
+          "outputTokens": 510,
+          "sessionInputTokens": 608,
+          "sessionOutputTokens": 510,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 8047,
+          "sessionId": "71161065-0e81-4a15-8c72-bf643c0595ca",
+          "error": null
+        },
+        {
+          "id": "contradiction_trap",
+          "category": "Conflict detection",
+          "question": "Does StudyMate still use MongoDB?",
+          "answer": "No—StudyMate has migrated from MongoDB to PostgreSQL. The migration decision was made in March 2026, and by May 2026 PostgreSQL was confirmed running successfully in production.",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 634,
+          "outputTokens": 204,
+          "sessionInputTokens": 634,
+          "sessionOutputTokens": 204,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1847,
+          "sessionId": "e2f3d6d2-5fc1-4925-9449-0e4644b530ff",
+          "error": null
+        },
+        {
+          "id": "hosting_now",
+          "category": "Supersession",
+          "question": "Where is the StudyMate backend hosted, according to the latest decision?",
+          "answer": "I’m not aware of the latest decision about where the StudyMate backend is hosted. Could you provide the relevant details or point me to the source where that decision was recorded?",
+          "grade": {
+            "pass": false,
+            "requiredHit": 0,
+            "requiredTotal": 1,
+            "recall": 0,
+            "missing": [
+              "names Render"
+            ],
+            "violations": []
+          },
+          "inputTokens": 689,
+          "outputTokens": 144,
+          "sessionInputTokens": 0,
+          "sessionOutputTokens": 0,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2785,
+          "sessionId": "280647dd-7b22-424c-8b66-8086ce3c8848",
+          "error": null
+        },
+        {
+          "id": "evidence",
+          "category": "Evidence attribution",
+          "question": "What evidence shows that StudyMate's PostgreSQL migration actually works?",
+          "answer": "The records from StudyMate’s internal notes provide several concrete points that demonstrate the PostgreSQL migration is functional:\n\n1. **Implementation Completed (14 Apr 2026)** – A log entry notes that the migration to PostgreSQL was fully implemented, indicating the code changes and deployment steps were finished.\n\n2. **Decision Rationale (3 Mar 2026)** – The team documented the reasons for moving from MongoDB to PostgreSQL (relational data needs), showing that the migration plan was formally approved and scoped.\n\n3. **Production Validation (20 May 2026)** – A later entry states that the application was **tested** after the migration and that **PostgreSQL is running successfully in production**. This confirms that the live environment was exercised and passed verification.\n\n4. **Runbook Completion (20 May 2026)** – The same day, Priya completed the data‑migration runbook, which typically includes step‑by‑step validation (data integrity checks, performance verification, rollback procedures). Finishing the runbook implies those checks were successful.\n\nTogether, the implementation log, the formal decision record, the production test confirmation, and the completed migration runbook constitute solid evidence that StudyMate’s PostgreSQL migration is not only deployed but also verified to be working correctly in the production environment.",
+          "grade": {
+            "pass": true,
+            "requiredHit": 2,
+            "requiredTotal": 2,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 625,
+          "outputTokens": 482,
+          "sessionInputTokens": 625,
+          "sessionOutputTokens": 482,
+          "rounds": 1,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 3011,
+          "sessionId": "d3193020-2d09-437c-9340-62abc655a8dd",
+          "error": null
+        }
+      ]
+    },
+    {
+      "phase": "C",
+      "label": "ContextOS direct (deterministic, no LLM for state)",
+      "model": "none (deterministic)",
+      "startedAt": "2026-11-05T20:37:40.842Z",
+      "finishedAt": "2026-11-05T20:37:57.748Z",
+      "notes": [
+        "Answers composed from the lifecycle projection; 0 LLM tokens to answer (Gemini was used earlier, once, for extraction)."
+      ],
+      "cases": [
+        {
+          "id": "current_db",
+          "category": "Current-state retrieval",
+          "question": "What database does the StudyMate project currently use, and why was it chosen?",
+          "answer": "StudyMate currently uses PostgreSQL as its primary database — VERIFIED on 20 May 2026 [E1]. Reason: on 3 Mar 2026 the team decided to migrate from MongoDB to PostgreSQL — stated reason: \"relational data requirements\" [E2]. Historical: MongoDB (superseded 3 Mar 2026). MongoDB claimed in use after being superseded — \"StudyMate still stores user data in MongoDB.\" (2 Jun 2026) [E3] is held for human review and does not change the current state. [E1] 2026-05-20 \"We tested the application and confirmed that PostgreSQL is running successfully in production.\" [E2] 2026-03-03 \"After comparing both databases, we have decided to migrate StudyMate from MongoDB to PostgreSQL because of relational data requirements.\"",
+          "grade": {
+            "pass": true,
+            "requiredHit": 2,
+            "requiredTotal": 2,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1943,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "original_db",
+          "category": "Historical retrieval",
+          "question": "What was StudyMate's original database plan at the start of the project?",
+          "answer": "Originally (12 Jan 2026), MongoDB was proposed for primary database [E1]. [E1] 2026-01-12 \"Initially, we are planning to use MongoDB because it is easy to integrate with our Node.js backend.\"",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1321,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "db_evolution",
+          "category": "Temporal correctness",
+          "question": "How did StudyMate's database decision evolve between January and May 2026?",
+          "answer": "6 lifecycle changes between 1 Jan 2026 and 31 Dec 2026: 12 Jan 2026 MongoDB proposed; 9 Feb 2026 PostgreSQL proposed; 3 Mar 2026 PostgreSQL decided; 3 Mar 2026 MongoDB superseded; 14 Apr 2026 PostgreSQL claimed implemented (unverified); 20 May 2026 PostgreSQL verified.",
+          "grade": {
+            "pass": true,
+            "requiredHit": 5,
+            "requiredTotal": 5,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2000,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "unverified_claims",
+          "category": "Implementation vs verification",
+          "question": "Which StudyMate implementation claims have not been verified yet?",
+          "answer": "1 implementation claim(s) have no verification evidence: Stripe (claimed 14 Apr 2026). Stripe (Payments provider) — it supports student discounts",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1381,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "not_implemented",
+          "category": "Decision vs implementation",
+          "question": "Which StudyMate decisions have been made but not implemented yet?",
+          "answer": "1 decision(s) are not implemented yet: Render. Render (Hosting platform) — Render's pricing is predictable for our usage.",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1604,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "rejected",
+          "category": "Rejected decisions",
+          "question": "Which technology options did the StudyMate team reject, and why?",
+          "answer": "StudyMate currently uses PostgreSQL as its primary database — VERIFIED on 20 May 2026 [E1]. Reason: on 3 Mar 2026 the team decided to migrate from MongoDB to PostgreSQL — stated reason: \"relational data requirements\" [E2]. Render was decided for hosting platform on 18 Mar 2026 but has not been implemented yet [E4]. StudyMate currently uses Stripe as its payments provider — claimed implemented on 14 Apr 2026 but NOT yet verified [E5]. Reason: on 3 Mar 2026 the team decided on Stripe — stated reason: \"it supports student discounts\" [E6]. Rejected: Redis (because traffic is low and it adds operational overhead). MongoDB claimed in use after being superseded — \"StudyMate still stores user data in MongoDB.\" (2 Jun 2026) [E3] is held for human review and does not change the current state. Redis (Caching layer) — traffic is low and it adds operational overhead [E1] 2026-05-20 \"We tested the application and confirmed that PostgreSQL is running successfully in production.\" [E2] 2026-03-03 \"After comparing both databases, we have decided to migrate StudyMate from MongoDB to PostgreSQL because of relational data requirements.\" [E4] 2026-03-18 \"We are moving hosting from Heroku to Render because Render's pricing is predictable for our usage.\" [E5] 2026-04-14 \"The Stripe payment integration has been implemented.\" [E6] 2026-03-03 \"We decided to use Stripe for subscription payments because it supports student discounts.\"",
+          "grade": {
+            "pass": true,
+            "requiredHit": 2,
+            "requiredTotal": 2,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2104,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "open_commitments",
+          "category": "Commitments",
+          "question": "Which StudyMate commitments are still open or overdue?",
+          "answer": "StudyMate currently uses PostgreSQL as its primary database — VERIFIED on 20 May 2026 [E1]. Reason: on 3 Mar 2026 the team decided to migrate from MongoDB to PostgreSQL — stated reason: \"relational data requirements\" [E2]. Render was decided for hosting platform on 18 Mar 2026 but has not been implemented yet [E4]. StudyMate currently uses Stripe as its payments provider — claimed implemented on 14 Apr 2026 but NOT yet verified [E5]. Reason: on 3 Mar 2026 the team decided on Stripe — stated reason: \"it supports student discounts\" [E6]. 1 unresolved commitment(s), 1 overdue: add payment failure alerts (overdue since 15 Jun 2026). MongoDB claimed in use after being superseded — \"StudyMate still stores user data in MongoDB.\" (2 Jun 2026) [E3] is held for human review and does not change the current state. add payment failure alerts — Owner: Ravi. Due 15 Jun 2026. [E1] 2026-05-20 \"We tested the application and confirmed that PostgreSQL is running successfully in production.\" [E2] 2026-03-03 \"After comparing both databases, we have decided to migrate StudyMate from MongoDB to PostgreSQL because of relational data requirements.\" [E4] 2026-03-18 \"We are moving hosting from Heroku to Render because Render's pricing is predictable for our usage.\" [E5] 2026-04-14 \"The Stripe payment integration has been implemented.\" [E6] 2026-03-03 \"We decided to use Stripe for subscription payments because it supports student discounts.\"",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1603,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "contradiction_trap",
+          "category": "Conflict detection",
+          "question": "Does StudyMate still use MongoDB?",
+          "answer": "StudyMate currently uses PostgreSQL as its primary database — VERIFIED on 20 May 2026 [E1]. Reason: on 3 Mar 2026 the team decided to migrate from MongoDB to PostgreSQL — stated reason: \"relational data requirements\" [E2]. Historical: MongoDB (superseded 3 Mar 2026). MongoDB claimed in use after being superseded — \"StudyMate still stores user data in MongoDB.\" (2 Jun 2026) [E3] is held for human review and does not change the current state. [E1] 2026-05-20 \"We tested the application and confirmed that PostgreSQL is running successfully in production.\" [E2] 2026-03-03 \"After comparing both databases, we have decided to migrate StudyMate from MongoDB to PostgreSQL because of relational data requirements.\"",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 2002,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "hosting_now",
+          "category": "Supersession",
+          "question": "Where is the StudyMate backend hosted, according to the latest decision?",
+          "answer": "Render was decided for hosting platform on 18 Mar 2026 but has not been implemented yet [E1]. Historical: Heroku (superseded 18 Mar 2026). [E1] 2026-03-18 \"We are moving hosting from Heroku to Render because Render's pricing is predictable for our usage.\"",
+          "grade": {
+            "pass": true,
+            "requiredHit": 1,
+            "requiredTotal": 1,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1622,
+          "sessionId": null,
+          "error": null
+        },
+        {
+          "id": "evidence",
+          "category": "Evidence attribution",
+          "question": "What evidence shows that StudyMate's PostgreSQL migration actually works?",
+          "answer": "StudyMate currently uses PostgreSQL as its primary database — VERIFIED on 20 May 2026 [E1]. Reason: on 3 Mar 2026 the team decided to migrate from MongoDB to PostgreSQL — stated reason: \"relational data requirements\" [E2]. Historical: MongoDB (superseded 3 Mar 2026). MongoDB claimed in use after being superseded — \"StudyMate still stores user data in MongoDB.\" (2 Jun 2026) [E3] is held for human review and does not change the current state. [E1] 2026-05-20 \"We tested the application and confirmed that PostgreSQL is running successfully in production.\" [E2] 2026-03-03 \"After comparing both databases, we have decided to migrate StudyMate from MongoDB to PostgreSQL because of relational data requirements.\"",
+          "grade": {
+            "pass": true,
+            "requiredHit": 2,
+            "requiredTotal": 2,
+            "recall": 1,
+            "missing": [],
+            "violations": []
+          },
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessionInputTokens": null,
+          "sessionOutputTokens": null,
+          "rounds": 0,
+          "toolCalls": [],
+          "contextosToolCalls": 0,
+          "latencyMs": 1324,
+          "sessionId": null,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+coverage/
+
+# Secrets — only the *.example files are committed
+.env
+.env.local
+.env.*.local
+
+# Probe output
+integration-tests/captures/

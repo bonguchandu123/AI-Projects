@@ -1,0 +1,41 @@
+{
+  "name": "contextos",
+  "private": true,
+  "type": "module",
+  "description": "ContextOS — decision-aware memory intelligence for AI workspaces (Odysseus integration).",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "mcp-server",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "db:up": "docker compose -f database/docker-compose.yml up -d --wait",
+    "db:down": "docker compose -f database/docker-compose.yml down",
+    "db:logs": "docker compose -f database/docker-compose.yml logs -f postgres",
+    "db:migrate": "npm run migrate --workspace @contextos/backend",
+    "db:status": "npm run migrate:status --workspace @contextos/backend",
+    "dev:backend": "npm run dev --workspace @contextos/backend",
+    "dev:frontend": "npm run dev --workspace @contextos/frontend",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint backend mcp-server && npm run lint --workspace @contextos/frontend",
+    "test": "npm run test --workspaces --if-present",
+    "demo:seed": "npm run demo:seed --workspace @contextos/backend",
+    "build": "npm run build --workspace @contextos/frontend",
+    "start:frontend": "npm run start --workspace @contextos/frontend",
+    "start:backend": "npm run start --workspace @contextos/backend"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "1.2.16"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.19.0",
+    "eslint": "^9.39.5",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1"
+  }
+}

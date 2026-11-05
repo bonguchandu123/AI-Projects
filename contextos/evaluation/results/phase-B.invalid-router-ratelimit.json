@@ -1,0 +1,291 @@
+{
+  "phase": "B",
+  "label": "Odysseus + ContextOS (MCP, agent mode)",
+  "model": "qwen/qwen3.8-27b",
+  "startedAt": "2026-11-05T21:13:25.876Z",
+  "finishedAt": "2026-11-05T21:13:51.487Z",
+  "notes": [
+    "Odysseus auth: browser session.",
+    "ContextOS MCP server fe135d72 tools ENABLED for this phase.",
+    "Removed 0 baseline memories; per-session memory injection OFF. ContextOS MCP is the only project memory. Questions sent exactly as in phase A (no extra instruction); Odysseus decides per turn whether to route to the ContextOS tools; Odysseus tool-approval cards answered \"Allow for this task\" as a user would."
+  ],
+  "cases": [
+    {
+      "id": "current_db",
+      "category": "Current-state retrieval",
+      "question": "What database does the StudyMate project currently use, and why was it chosen?",
+      "answer": "I don't have any context about a \"StudyMate project\" in this conversation, and there's no active workspace or project context I can draw from. I'm also not set up in this conversation with tools to search a codebase, docs, or project history — so there's no reliable information available for me to tell you what database StudyMate uses or why it was chosen.\n\nIf you can share the project context (e.g., a docs folder, a requirements/README file, or a link to the repo), I'd be happy to read through it and identify the database choice and the stated reasoning behind it.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 2,
+        "recall": 0,
+        "missing": [
+          "names PostgreSQL",
+          "gives the relational-data reason"
+        ],
+        "violations": []
+      },
+      "inputTokens": 3039,
+      "outputTokens": 127,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 2459,
+      "sessionId": "d9bd8530-076c-4d0a-9e45-415873a3b978",
+      "error": null
+    },
+    {
+      "id": "original_db",
+      "category": "Historical retrieval",
+      "question": "What was StudyMate's original database plan at the start of the project?",
+      "answer": "I don't have any information about a project called StudyMate or its database plan — nothing from it is in my context, and I have no memory of prior discussions with you about it.\n\nIf you've shared this project with me before under a different name or in files I can access, let me know where (e.g., a document, code repo, or notes file) and I'll look there. Otherwise, happy to answer once you give me a bit more to go on.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 1,
+        "recall": 0,
+        "missing": [
+          "names MongoDB"
+        ],
+        "violations": []
+      },
+      "inputTokens": 2675,
+      "outputTokens": 100,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1778,
+      "sessionId": "0e4ce9fd-7590-4f67-a1e2-b9777aa0bb10",
+      "error": null
+    },
+    {
+      "id": "db_evolution",
+      "category": "Temporal correctness",
+      "question": "How did StudyMate's database decision evolve between January and May 2026?",
+      "answer": "The task is incomplete: Model request failed.\n\nThe model provider returned no usable output. No workspace change was made.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 5,
+        "recall": 0,
+        "missing": [
+          "mentions MongoDB",
+          "mentions PostgreSQL",
+          "distinguishes proposal/consideration",
+          "mentions the decision",
+          "mentions verification/confirmation"
+        ],
+        "violations": []
+      },
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1395,
+      "sessionId": "966abf6b-1e08-4b3a-89ed-00afe3ca8a0c",
+      "error": null
+    },
+    {
+      "id": "unverified_claims",
+      "category": "Implementation vs verification",
+      "question": "Which StudyMate implementation claims have not been verified yet?",
+      "answer": "The task is incomplete: Model request failed.\n\nThe model provider returned no usable output. No workspace change was made.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 1,
+        "recall": 0,
+        "missing": [
+          "names Stripe"
+        ],
+        "violations": []
+      },
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1065,
+      "sessionId": "d06bbf82-9bbd-4163-8b62-999d2051245f",
+      "error": null
+    },
+    {
+      "id": "not_implemented",
+      "category": "Decision vs implementation",
+      "question": "Which StudyMate decisions have been made but not implemented yet?",
+      "answer": "The task is incomplete: Model request failed.\n\nThe model provider returned no usable output. No workspace change was made.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 1,
+        "recall": 0,
+        "missing": [
+          "names Render"
+        ],
+        "violations": []
+      },
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1171,
+      "sessionId": "74198bb1-9e00-4022-8ded-cd4743b3a68a",
+      "error": null
+    },
+    {
+      "id": "rejected",
+      "category": "Rejected decisions",
+      "question": "Which technology options did the StudyMate team reject, and why?",
+      "answer": "The task is incomplete: Model request failed.\n\nThe model provider returned no usable output. No workspace change was made.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 2,
+        "recall": 0,
+        "missing": [
+          "names Redis",
+          "gives the reason"
+        ],
+        "violations": []
+      },
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1193,
+      "sessionId": "fce83bde-de10-4582-910d-37fbb32c1e6a",
+      "error": null
+    },
+    {
+      "id": "open_commitments",
+      "category": "Commitments",
+      "question": "Which StudyMate commitments are still open or overdue?",
+      "answer": "The task is incomplete: Model request failed.\n\nThe model provider returned no usable output. No workspace change was made.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 1,
+        "recall": 0,
+        "missing": [
+          "names payment failure alerts"
+        ],
+        "violations": []
+      },
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1405,
+      "sessionId": "2ef54e9e-dda9-4fa3-967d-4eb2883f3fab",
+      "error": null
+    },
+    {
+      "id": "contradiction_trap",
+      "category": "Conflict detection",
+      "question": "Does StudyMate still use MongoDB?",
+      "answer": "The task is incomplete: Model request failed.\n\nThe model provider returned no usable output. No workspace change was made.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 1,
+        "recall": 0,
+        "missing": [
+          "points to PostgreSQL"
+        ],
+        "violations": []
+      },
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1250,
+      "sessionId": "49ce542a-3261-47c8-9bd5-811e4015117c",
+      "error": null
+    },
+    {
+      "id": "hosting_now",
+      "category": "Supersession",
+      "question": "Where is the StudyMate backend hosted, according to the latest decision?",
+      "answer": "I don’t have a source or record showing where the StudyMate backend is hosted, so I can’t confirm the latest decision from the information provided.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 1,
+        "recall": 0,
+        "missing": [
+          "names Render"
+        ],
+        "violations": []
+      },
+      "inputTokens": 1728,
+      "outputTokens": 31,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 2010,
+      "sessionId": "109b70d7-0e76-4d77-b441-bb1a455e4c34",
+      "error": null
+    },
+    {
+      "id": "evidence",
+      "category": "Evidence attribution",
+      "question": "What evidence shows that StudyMate's PostgreSQL migration actually works?",
+      "answer": "The task is incomplete: Model request failed.\n\nThe model provider returned no usable output. No workspace change was made.",
+      "grade": {
+        "pass": false,
+        "requiredHit": 0,
+        "requiredTotal": 2,
+        "recall": 0,
+        "missing": [
+          "cites the production test/confirmation",
+          "dates it (May 2026)"
+        ],
+        "violations": []
+      },
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "sessionInputTokens": 0,
+      "sessionOutputTokens": 0,
+      "rounds": 1,
+      "toolCalls": [],
+      "contextosToolCalls": 0,
+      "approvals": 0,
+      "latencyMs": 1936,
+      "sessionId": "253f9689-6d82-4bce-9617-52bdfb278601",
+      "error": null
+    }
+  ]
+}

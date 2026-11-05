@@ -1,0 +1,27 @@
+{
+  "name": "@contextos/backend",
+  "private": true,
+  "type": "module",
+  "description": "ContextOS API: REST, MCP endpoint, ingestion and background jobs (modular monolith).",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "migrate": "tsx src/db/migrate-cli.ts up",
+    "migrate:status": "tsx src/db/migrate-cli.ts status",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "demo:seed": "tsx src/demo/seed-cli.ts"
+  },
+  "dependencies": {
+    "@contextos/mcp-server": "*",
+    "@google/genai": "^2.32.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "fastify": "^5.12.8",
+    "pg": "^8.23.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "vitest": "^5.1.0"
+  }
+}
